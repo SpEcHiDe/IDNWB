@@ -1,6 +1,17 @@
-import { Context } from 'grammy';
+import {
+    Context,
+    InlineKeyboard,
+} from 'grammy';
 
 
 export function start(ctx: Context) {
-    ctx.reply("Welcome! Up and running.");
+    ctx.replyWithSticker(
+        "CAACAgIAAxkBAAEPu1Fie96etjykdLTIzOW3o4MV6JPv6wACpAwAAqoUyEoBbu6msnyOHCQE",
+        {
+            reply_markup: new InlineKeyboard().url(
+                "source",
+                "https://t.me/c/1471736013/26632",
+            ),
+        }
+    );
 }
