@@ -1,6 +1,7 @@
 import {
     Bot,
     Context,
+    InlineKeyboard,
 } from 'grammy';
 
 
@@ -20,6 +21,7 @@ function extract_bot_token(msg_text: string, entities: any) {
 export async function telegram_bot_tokenextract(ctx: Context) {
     let entities = ctx.message?.entities;
     let msg_text = ctx.message?.text || "";
+    // extract bot token
     let bot_token = extract_bot_token(
         msg_text,
         entities
@@ -38,7 +40,14 @@ export async function telegram_bot_tokenextract(ctx: Context) {
         // Make sure it is `https` not `http`!
         await bot.api.setWebhook(`${process.env.URL}/${bot_token}`);
     }
+    // finally reply done to the user
     await ctx.replyWithSticker(
-        "CAACAgUAAxkBAAEPvDFie_SFX9QPy_PzMr9bOY9LDIbekwAC3wEAAjzLfB_2ory8DFKOUyQE"
+        "CAACAgUAAxkBAAEPvDFie_SFX9QPy_PzMr9bOY9LDIbekwAC3wEAAjzLfB_2ory8DFKOUyQE",
+        {
+            reply_markup: new InlineKeyboard().url(
+                "Source Code",
+                "https://github.com/SpEcHiDe/IDNWB"
+            )
+        }
     );
 }
