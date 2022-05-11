@@ -4,6 +4,7 @@ import { Bot } from "grammy";
 
 import { start } from './plugins/start.js';
 import { inline } from './plugins/inline.js';
+import { telegram_bot_tokenextract } from './plugins/tgbte.js';
 
 const app = express();
 
@@ -27,6 +28,12 @@ app.use(
         // Handle the /start command.
         bot.command("start", start);
         bot.on("inline_query", inline);
+        bot
+            .on("msg:text")
+            .filter(
+                (ctx) => ctx.message?.forward_from?.username?.toLowerCase() === "botfather",
+                telegram_bot_tokenextract
+            )
         // finally, register the webhook
         // https://t.me/c/1493653006/49880
         return webhookCallback(bot, "express")(req, res);
