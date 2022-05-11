@@ -1,1 +1,1 @@
-web: npm install && npx tsc && node dist/app.js
+web: npm install typescript && npm install && npx tsc && node dist/app.js
