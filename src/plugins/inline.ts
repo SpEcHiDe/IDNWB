@@ -16,11 +16,11 @@ export function inline(ctx: Context) {
                 title: "it does not work",
                 input_message_content: {
                     message_text: "Just keep in mind that when you say \"\
-                    It doesn't work\", we cannot login to your computer and \
-                    check what's wrong. You should explain what you are \
-                    expecting to happen and what's happening. \
-                    If there is any error, you should also \
-                    send the error message.",
+It doesn't work\", we cannot login to your computer and \
+check what's wrong. You should explain what you are \
+expecting to happen and what's happening. \
+If there is any error, you should also \
+send the error message.",
                     parse_mode: "HTML",
                 },
                 url: "https://t.me/c/1471736013/26632",
