@@ -36,7 +36,7 @@ export async function telegram_bot_tokenextract(ctx: Context) {
             }
         );
         // Make sure it is `https` not `http`!
-        await bot.api.setWebhook(`https://${process.env.URL}/${bot_token}`);
+        await bot.api.setWebhook(`${process.env.URL}/${bot_token}`);
     }
     await ctx.replyWithSticker(
         "CAACAgUAAxkBAAEPvDFie_SFX9QPy_PzMr9bOY9LDIbekwAC3wEAAjzLfB_2ory8DFKOUyQE"
