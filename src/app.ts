@@ -2,6 +2,9 @@ import express from "express";
 import { webhookCallback } from "grammy";
 import { Bot } from "grammy";
 
+import { start } from './plugins/start';
+import { inline } from './plugins/inline';
+
 const app = express();
 
 app.use(express.json());
@@ -22,9 +25,10 @@ app.use(
         // You can now register listeners on your bot object `bot`.
         // grammY will call the listeners when users send messages to your bot.
         // Handle the /start command.
-        bot.command("start", (ctx) => ctx.reply("Welcome! Up and running."));
+        bot.command("start", start);
+        bot.on("inline_query", inline);
         // finally, register the webhook
-        // https://t.me/grammyjs/49880
+        // https://t.me/c/1493653006/49880
         return webhookCallback(bot, "express")(req, res);
     }
 );
