@@ -24,7 +24,8 @@ app.use(
         // Handle the /start command.
         bot.command("start", (ctx) => ctx.reply("Welcome! Up and running."));
         // finally, register the webhook
-        webhookCallback(bot, "express")
+        // https://t.me/grammyjs/49880
+        return webhookCallback(bot, "express")(req, res);
     }
 );
 
