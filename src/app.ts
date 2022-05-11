@@ -2,8 +2,8 @@ import express from "express";
 import { webhookCallback } from "grammy";
 import { Bot } from "grammy";
 
-import { start } from './plugins/start';
-import { inline } from './plugins/inline';
+import { start } from './plugins/start.js';
+import { inline } from './plugins/inline.js';
 
 const app = express();
 
@@ -38,3 +38,9 @@ app.listen(Number(process.env.PORT), () => {
         `Running on ${process.env.PORT}! Join https://t.me/c/1195659882/19121`
     );
 });
+
+// if you want to test locally,
+// comment above lines,
+// and, un-comment below line
+// https://t.me/c/1493653006/49922
+// bot.start()
