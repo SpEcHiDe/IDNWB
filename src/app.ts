@@ -10,7 +10,15 @@ app.use(
     '/:botToken',
     (req, res) => {
         // Create an instance of the `Bot` class and pass your authentication token to it.
-        const bot = new Bot(req.params.botToken);
+        const bot = new Bot(
+            req.params.botToken,
+            {
+                client: {
+                    // We accept the drawback of webhook replies for typing status.
+                    canUseWebhookReply: (method) => method === "sendChatAction",
+                }
+            }
+        );
         // You can now register listeners on your bot object `bot`.
         // grammY will call the listeners when users send messages to your bot.
         // Handle the /start command.
