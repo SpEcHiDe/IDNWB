@@ -1,1 +1,0 @@
-web: cd /app/ && npm install && ./node_modules/.bin/tsc && node dist/app.js
