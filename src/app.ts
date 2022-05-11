@@ -2,8 +2,8 @@ import express from "express";
 import { webhookCallback } from "grammy";
 import { Bot } from "grammy";
 
-import { start } from './plugins/start';
-import { inline } from './plugins/inline';
+import start from './plugins/start';
+import inline from './plugins/inline';
 
 const app = express();
 

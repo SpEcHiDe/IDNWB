@@ -1,7 +1,7 @@
 import { Context } from 'grammy';
 
 
-export function inline(ctx: Context) {
+export default function inline(ctx: Context) {
     /**
      * https://grammy.dev/guide/inline-queries.html
      */

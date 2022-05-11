@@ -4,7 +4,7 @@ import {
 } from 'grammy';
 
 
-export function start(ctx: Context) {
+export default function start(ctx: Context) {
     ctx.replyWithSticker(
         "CAACAgIAAxkBAAEPu1Fie96etjykdLTIzOW3o4MV6JPv6wACpAwAAqoUyEoBbu6msnyOHCQE",
         {
