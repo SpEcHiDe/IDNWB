@@ -1,10 +1,13 @@
-# NodeJS Alpine Build
-FROM node:alpine3.10
+# https://github.com/grammyjs/create-grammy/blob/36c0dedf486221f132b2734c084c9b5405bf4f03/configs/docker/node/Dockerfile
+FROM node:lts-alpine
 
-# Add your source files
-COPY . .
+RUN mkdir -p /app
+WORKDIR /app
 
-RUN npm install --production=false && \
+COPY . /app
+
+RUN cd /app && \
+    npm install --production=false && \
     npm run dev-build
 
-CMD ["sh","start.sh"]
+CMD ["node", "dist/app.js"]
