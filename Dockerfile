@@ -7,4 +7,4 @@ COPY . .
 RUN npm install --production=false && \
     npm run dev-build
 
-CMD ["bash","start.sh"]
+CMD ["sh","start.sh"]
