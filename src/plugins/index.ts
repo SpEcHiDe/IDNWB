@@ -4,9 +4,7 @@ import inline from "./inline.js";
 import start from "./start.js";
 import tgbte from "./tgbte.js";
 
-const composer = new Composer();
-
-export default composer;
+export const composer = new Composer();
 
 composer.use(inline);
 composer.use(start);

@@ -1,7 +1,7 @@
 import express from "express";
 import { webhookCallback } from "grammy";
 
-import plugins from "./plugins/index.js";
+import { composer } from "./plugins/index.js";
 import { getBot } from "./bots.js";
 
 const app = express();
@@ -15,7 +15,7 @@ app.use("/:botToken", (req, res) => {
         // You can now register listeners on your bot object `bot`.
         // grammY will call the listeners when users send messages to your bot.
         // Handle the /start command.
-        bot.use(plugins)
+        bot.use(composer)
         // finally, register the webhook
         // https://t.me/c/1493653006/49880
         return webhookCallback(bot, "express")(req, res);
