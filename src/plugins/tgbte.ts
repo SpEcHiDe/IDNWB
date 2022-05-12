@@ -27,18 +27,21 @@ export async function telegram_bot_tokenextract(ctx: Context) {
         entities
     );
     if (bot_token !== undefined) {
-        // Create an instance of the `Bot` class and pass your authentication token to it.
-        const bot = new Bot(
-            bot_token,
-            {
-                client: {
-                    // We accept the drawback of webhook replies for typing status.
-                    canUseWebhookReply: (method) => method === "sendChatAction",
+        try {
+            // Create an instance of the `Bot` class and pass your authentication token to it.
+            const bot = new Bot(
+                bot_token,
+                {
+                    client: {
+                        // We accept the drawback of webhook replies for typing status.
+                        canUseWebhookReply: (method) => method === "sendChatAction",
+                    }
                 }
-            }
-        );
-        // Make sure it is `https` not `http`!
-        await bot.api.setWebhook(`${process.env.URL}/${bot_token}`);
+            );
+            // Make sure it is `https` not `http`!
+            await bot.api.setWebhook(`${process.env.URL}/${bot_token}`);
+        }
+        catch (e) { }
     }
     // finally reply done to the user
     await ctx.replyWithSticker(
