@@ -12,6 +12,7 @@ composer.command("start", (ctx) => {
                 "Share",
                 "https://t.me/c/1471736013/26632"
             ),
+            reply_to_message_id: ctx.message?.message_id,
         }
     );
 });
