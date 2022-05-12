@@ -1,20 +1,22 @@
-import {
-    Context,
-} from 'grammy';
+import { Composer } from "grammy";
 
+const composer = new Composer();
 
-export function inline(ctx: Context) {
+export default composer;
+
+composer.on("inline_query", (ctx) => {
     /**
      * https://grammy.dev/guide/inline-queries.html
      */
-    ctx.answerInlineQuery(
+    return ctx.answerInlineQuery(
         [
             {
                 type: "article",
                 id: "1471736013 26632",
                 title: "it does not work",
                 input_message_content: {
-                    message_text: "Just keep in mind that when you say \"\
+                    message_text:
+                        "Just keep in mind that when you say \"\
 It doesn't work\", we cannot login to your computer and \
 check what's wrong. You should explain what you are \
 expecting to happen and what's happening. \
@@ -30,13 +32,14 @@ send the error message.",
             {
                 type: "sticker",
                 id: "ShitDevsSay",
-                sticker_file_id: "CAACAgIAAxkBAAEPu1Fie96etjykdLTIzOW3o4MV6JPv6wACpAwAAqoUyEoBbu6msnyOHCQE",
+                sticker_file_id:
+                    "CAACAgIAAxkBAAEPu1Fie96etjykdLTIzOW3o4MV6JPv6wACpAwAAqoUyEoBbu6msnyOHCQE",
             },
         ],
         {
-            cache_time: 30 * 24 * 3600,  // one month in seconds
+            cache_time: 30 * 24 * 3600, // one month in seconds
             switch_pm_text: "[❤️] grammY ",
             switch_pm_parameter: "pkliawot",
-        },
+        }
     );
-}
+});
