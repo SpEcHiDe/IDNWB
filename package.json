@@ -2,6 +2,7 @@
     "name": "it-did-not-work-bot",
     "version": "0.0.1",
     "description": "",
+    "type": "module",
     "main": "dist/app.js",
     "scripts": {
         "dev-build": "tsc"

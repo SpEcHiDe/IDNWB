@@ -1,7 +1,7 @@
 import express from "express";
 import { webhookCallback } from "grammy";
 
-import plugins from "./plugins";
+import plugins from "./plugins/index";
 import { getBot } from "./bots";
 
 const app = express();
