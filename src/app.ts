@@ -11,13 +11,16 @@ app.use(express.json());
 app.use("/:botToken", (req, res) => {
     // Create an instance of the `Bot` class and pass your authentication token to it.
     const bot = getBot(req.params.botToken);
-    // You can now register listeners on your bot object `bot`.
-    // grammY will call the listeners when users send messages to your bot.
-    // Handle the /start command.
-    bot.use(plugins)
-    // finally, register the webhook
-    // https://t.me/c/1493653006/49880
-    return webhookCallback(bot, "express")(req, res);
+    if (bot !== undefined) {
+        // You can now register listeners on your bot object `bot`.
+        // grammY will call the listeners when users send messages to your bot.
+        // Handle the /start command.
+        bot.use(plugins)
+        // finally, register the webhook
+        // https://t.me/c/1493653006/49880
+        return webhookCallback(bot, "express")(req, res);
+    }
+    res.send("-_-");
 });
 
 app.listen(Number(process.env.PORT), () => {

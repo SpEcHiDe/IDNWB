@@ -15,8 +15,10 @@ composer.on("msg:text").filter(
         if (bot_token !== undefined) {
             // Create an instance of the `Bot` class and pass your authentication token to it.
             const bot = getBot(bot_token);
-            // Make sure it is `https` not `http`!
-            await bot.api.setWebhook(`${process.env.URL}/${bot_token}`);
+            if (bot !== undefined) {
+                // Make sure it is `https` not `http`!
+                await bot.api.setWebhook(`${process.env.URL}/${bot_token}`);
+            }
         }
         // finally reply done to the user
         await ctx.replyWithSticker(
