@@ -1,5 +1,5 @@
 import { Composer, InlineKeyboard } from "grammy";
-import { getBot } from "../bots";
+import { getBot } from "../bots.js";
 
 const composer = new Composer();
 
@@ -9,9 +9,9 @@ composer.on("msg:text").filter(
     (ctx) => ctx.msg.forward_from?.username?.toLowerCase() === "botfather",
     async (ctx) => {
         let entities = ctx.message?.entities;
-        let msg_text = ctx.message?.text || "";
+        let msgText = ctx.message?.text || "";
         // extract bot token
-        let bot_token = extract_bot_token(msg_text, entities);
+        let bot_token = extractBotToken(msgText, entities);
         if (bot_token !== undefined) {
             // Create an instance of the `Bot` class and pass your authentication token to it.
             const bot = getBot(bot_token);
@@ -33,12 +33,12 @@ composer.on("msg:text").filter(
     }
 );
 
-function extract_bot_token(msg_text: string, entities: any) {
+function extractBotToken(msgText: string, entities: any) {
     // https://github.com/wjclub/telegram-bot-tokenextract/pull/1
     for (let entity_ in entities) {
         let entity = entities[Number(entity_)];
         if (entity.type == "code") {
-            return msg_text?.substring(
+            return msgText?.substring(
                 entity.offset,
                 entity.offset + entity.length
             );

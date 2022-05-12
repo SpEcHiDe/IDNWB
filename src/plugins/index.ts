@@ -1,8 +1,8 @@
 import { Composer } from "grammy";
 
-import inline from "./inline";
-import start from "./start";
-import tgbte from "./tgbte";
+import inline from "./inline.js";
+import start from "./start.js";
+import tgbte from "./tgbte.js";
 
 const composer = new Composer();
 
